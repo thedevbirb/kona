@@ -196,7 +196,7 @@ impl BlockHandler {
         // The timestamp is at most 5 seconds in the future.
         let is_future = envelope.payload.timestamp() > current_timestamp + 5;
         // The timestamp is at most 60 seconds in the past.
-        let is_past = envelope.payload.timestamp() < current_timestamp - 60;
+        let is_past = false; // CHANGE(thedevbirb): unsafe option -- allow old payloads.
 
         // CHECK: The timestamp is not too far in the future or past.
         if is_future || is_past {
